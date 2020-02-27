@@ -1,0 +1,46 @@
+create database da_bm;
+
+create table bankM ( 
+	age int, 
+	job varchar(25), 
+	marital varchar(25), 
+	education varchar(25), 
+	c_default varchar(25), 
+	balance varchar(25), 
+	housing varchar(10), 
+	loan varchar(10), 
+	contact varchar(15), 
+	day int, 
+	month varchar(10), 
+	duration int, 
+	campaign int, 
+	pdays int, 
+	previous int, 
+	poutcome varchar(255), 
+	subscribed INT
+);
+
+
+//IN CSV FILE DEscription  was contaning ',' so giving wrong values in some rows, so replaced ',' by '-'
+
+//IMPORTING DATA FROM CSV FILE
+LOAD DATA LOCAL INFILE '/home/gunno/Documents/Sem_III_IIITH/DA-I/Assignment2/BM.csv' 
+INTO TABLE bankM 
+FIELDS TERMINATED BY ',' 
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+ALTER TABLE inspect_detail ADD COLUMN id int auto_increment primary key AFTER subscribed;
+
+
+data.rename(columns = {"V1": "Age","V2": "Job","V3": "Marital","V4": "Education","V5": "c_default","V6": "Balance","V7": "Housing","V8": "Loan","V9": "contact","V10": "Day","V11": "Month","V12": "Duration","V13": "Campaign", "V14": "pdays","V15": "previous","V16": "poutcome","Class": "subscribed"}) 
+
+
+
+
+
+
+
+
+
